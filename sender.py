@@ -58,22 +58,29 @@ class PLCModule:
                 print(f"WARNING: Received data from unexpected address {incoming_address}")
                 continue
             
+            seg, no_cor = Segment.decode(data)
+            assert no_cor, "checksum was corrupted when it shouldn't be" # segment should not be corrupted by transfer through localhost
+
             if self._flip(self.rlp):
-
-                self._write_log('rcv', 'drp', Segment.decode(data))  #CAREFUL, THE SEGMENT MAY BE CORRUPTED HERE
+                if seg != None: 
+                    self._write_log('rcv', 'drp', seg)
                 self.stats.rev_drp += 1
+                continue
+
+            if self._flip(self.rcp):
+                self._write_log('rcv', 'cor', seg)
+                self.stats.rev_cor += 1
+
+                corrupted_data = self._corrupt(data)
+
+                # ensure corruption worked
+                if Segment.decode(corrupted_data)[1]:
+                    print("WARNING: corruption failed to alter checksum")
+
+                return corrupted_data
             else:
-                break 
-
-        if self._flip(self.rcp):
-            corrupted_seg = Segment.decode(self._corrupt(data))
-            self._write_log('rcv', 'cor', Segment.decode(data))
-            self.stats.rev_cor += 1
-            return corrupted_seg
-
-        seg = Segment.decode(data)
-        self._write_log('rcv', 'ok', seg)
-        return seg
+                self._write_log('rcv', 'ok', seg)
+                return data
     
     def _write_log(self, type, action, seg):
         elapsed = 0.0
@@ -82,7 +89,7 @@ class PLCModule:
         else:
             elapsed = (time.perf_counter_ns() - self.time_start) / 1e6
         
-        log_str = f'{type}  {action:<3}  {elapsed:6.2f}  {seg.type():<4}  {seg.seq_num:5d}  {len(seg.data):4d}\n' 
+        log_str = f'{type}  {action:<3}  {elapsed:7.2f}  {seg.type():<4}  {seg.seq_num:5d}  {len(seg.data):4d}\n' 
         self.logf.write(log_str)
         self.logf.flush()
         
@@ -227,7 +234,7 @@ class Sender:
         self.scb.acquire()
         while wrap_cmp(self.scb.next_seqnum, wrap_add(self.scb.snd_base, self.max_win)) == -1:
             window_bytes_remaining = wrap_sub(wrap_add(self.scb.snd_base, self.max_win), self.scb.next_seqnum) # IS IT CERTAIN THAT THESE WRAP FUNCTIONS ARE CORRECT
-            nbytes = max(self.mss, window_bytes_remaining)
+            nbytes = min(self.mss, window_bytes_remaining)
 
             self.scb.release()
             data = self.textf.read(nbytes)
@@ -253,7 +260,7 @@ class Sender:
     def handle_ack(self, ack_seq_num):
         self.scb.acquire()
 
-        if wrap_cmp(ack_seq_num, self.scb.snd_base) == -1: #!NEED TO WRAP
+        if wrap_cmp(ack_seq_num, self.scb.snd_base) == -1:
             print("NOTE: ack below window base received")
             self.scb.release()
             return 
@@ -272,6 +279,8 @@ class Sender:
             return 
         
         # We now have self.scb.snd_base < ack_seq_num <= self.scb.next_seqnum
+        assert wrap_cmp(self.scb.snd_base, ack_seq_num) == -1 and wrap_cmp(ack_seq_num, self.scb.next_seqnum) <= 0, f'ack_seq_num invariants failed'
+
         while self.scb.unacked_queue and wrap_cmp(self.scb.unacked_queue[0].end_seq_num(), ack_seq_num) <= 0: 
             self.scb.unacked_queue.popleft()
 
@@ -288,10 +297,9 @@ class Sender:
             assert self.scb.unacked_queue, f'Queue invariants failed'
             seg : Segment = self.scb.unacked_queue[0]
             
-            print('Trimming segment')
             trim_len = wrap_sub(ack_seq_num, seg.seq_num)
             if trim_len != 0:
-                print(f'{trim_len} data bytes are being trimmed')
+                print(f'Trimming segment [{seg.seq_num}, {seg.end_seq_num()}) due to ack {ack_seq_num}.{trim_len} data bytes are being trimmed')
                 seg.data = seg.data[trim_len:]
                 seg.seq_num = ack_seq_num
                 seg.generate_checksum()
@@ -336,8 +344,9 @@ class Sender:
     def recv(self):
         """Guarantees that the received segment is an uncorrupted ack. If not an ack, an error is thrown"""
         while True:
-            seg = plc.recv()
-            if (not seg.validate()):
+            data = plc.recv()
+            seg, no_cor = Segment.decode(data)
+            if not no_cor:
                 self.stats.cor_acks += 1
                 continue
 

@@ -156,26 +156,29 @@ class Receiver:
 
         if segment.seq_num == self.scb.rcv_base:
             self.scb.buffer.appendleft(segment)
+            print(f'processing segment [{segment.seq_num, segment.end_seq_num()}) at rcvbase. {self._describe_buffer()}')
             while self.scb.buffer and self.scb.buffer[0].seq_num == self.scb.rcv_base:
-                self.scb.rcv_base = segment.end_seq_num()
-                self.deliver_segment(segment)
-                self.scb.buffer.popleft()
+                delivery = self.scb.buffer.popleft()
+                self.scb.rcv_base = delivery.end_seq_num()
+                self.deliver_segment(delivery)
             if self.scb.buffer and wrap_cmp(self.scb.rcv_base, self.scb.buffer[0].seq_num) == 1:
                 self.panic(f'invalid segment sizes in buffer. rcv_base={self.scb.rcv_base}; {self._describe_buffer()}')
         else:
             insert_at_end = True
-            for i in range(1, len(self.scb.buffer)):
+            for i in range(0, len(self.scb.buffer)):
                 if self.scb.buffer[i].seq_num == segment.seq_num:
                     if (self.scb.buffer[i].end_seq_num() != segment.end_seq_num()):
                         self.panic(f'invalid duplicate segment [{segment.seq_num, segment.end_seq_num()}). {self._describe_buffer()}')
 
+                    print('received duplicate out of order segment')
                     insert_at_end = False
-                    break   # duplicate out of order segment
+                    break  
                 elif wrap_cmp(self.scb.buffer[i].seq_num, segment.seq_num) == 1:
                     if (wrap_cmp(segment.end_seq_num(), self.scb.buffer[i].seq_num) == 1):
                         self.panic(f'invalid segment [{segment.seq_num, segment.end_seq_num()}) overlaps buffer segment. {self._describe_buffer()}')
-                    self.scb.buffer.insert(i)
+                    self.scb.buffer.insert(i, segment)
 
+                    print(f'inserting segment [{segment.seq_num, segment.end_seq_num()}) at position {i}. {self._describe_buffer()}')
                     insert_at_end = False
                     break
 
@@ -220,9 +223,10 @@ class Receiver:
             print("WARNING: Received data from unexpected address")
             return None
 
-        seg = Segment.decode(data)
-        if seg == None or not seg.validate():
-            self._write_log('rcv', 'cor', seg)
+        seg, no_cor = Segment.decode(data)
+        if not no_cor:
+            if seg != None:
+                self._write_log('rcv', 'cor', seg)
             return None
 
         self._write_log('rcv', 'ok', seg)
@@ -235,7 +239,7 @@ class Receiver:
         else:
             elapsed = (time.perf_counter_ns() - self.time_start) / 1e6   #THIS MAKES INITIAL TIME NONZERO, DO IT PROPERLY
         
-        log_str = f'{type}  {action:<3}  {elapsed:6.2f}  {seg.type():<4}  {seg.seq_num:5d}  {len(seg.data):4d}\n' 
+        log_str = f'{type}  {action:<3}  {elapsed:7.2f}  {seg.type():<4}  {seg.seq_num:5d}  {len(seg.data):4d}\n' 
 
         self.logf.write(log_str)
         self.logf.flush()
@@ -263,11 +267,11 @@ with open('receiver_log.txt', 'wt') as logf, open(txt_file_to_receive, 'wt') as 
     
     receiver.run()
     
-    logf.write(f'Original data received:          {receiver.stats.original_bytes:6d}\n')
-    logf.write(f'Total data received:             {receiver.stats.tot_bytes:6d}\n')
-    logf.write(f'Original segments received:      {receiver.stats.original_segs:6d}\n')
-    logf.write(f'Total segments received:         {receiver.stats.tot_segs:6d}\n')
-    logf.write(f'Corrupted segments discarded     {receiver.stats.cor_segs:6d}\n')
-    logf.write(f'Duplicate segments received:     {receiver.stats.dup_segs:6d}\n')
-    logf.write(f'Total acks sent:                 {receiver.stats.tot_acks:6d}\n')
-    logf.write(f'Duplicate acks sent:             {receiver.stats.dup_acks:6d}\n')
+    logf.write(f'Original data received:        {receiver.stats.original_bytes:6d}\n')
+    logf.write(f'Total data received:           {receiver.stats.tot_bytes:6d}\n')
+    logf.write(f'Original segments received:    {receiver.stats.original_segs:6d}\n')
+    logf.write(f'Total segments received:       {receiver.stats.tot_segs:6d}\n')
+    logf.write(f'Corrupted segments discarded   {receiver.stats.cor_segs:6d}\n')
+    logf.write(f'Duplicate segments received:   {receiver.stats.dup_segs:6d}\n')
+    logf.write(f'Total acks sent:               {receiver.stats.tot_acks:6d}\n')
+    logf.write(f'Duplicate acks sent:           {receiver.stats.dup_acks:6d}\n')

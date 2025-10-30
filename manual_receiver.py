@@ -76,9 +76,10 @@ class Receiver:
                 print("WARNING: Received data from unexpected address")
                 continue 
 
-            seg = Segment.decode(data)
-            if seg == None or not seg.validate():
-                self._write_log('rcv', 'cor', seg)
+            seg, no_cor = Segment.decode(data)
+            if not no_cor:
+                if seg != None:
+                    self._write_log('rcv', 'cor', seg)
                 continue 
 
             self._write_log('rcv', 'ok', seg)

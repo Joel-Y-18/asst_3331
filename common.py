@@ -6,30 +6,26 @@ class InvalidSegmentError (Exception):
     pass
 
 class Segment:
-    def __init__(self, seq_num=None, ack=None, syn=None, fin=None, data=None, checksum=None):
+    def __init__(self, seq_num=None, ack=None, syn=None, fin=None, data=None):
         self.seq_num = seq_num 
         self.ack = ack 
         self.syn = syn 
         self.fin = fin 
-        self.checksum = checksum
         self.data = data 
     
-    def encode(self, generate_checksum=True):
+    def encode(self):
         """Returns a byte stream representing segment"""
-        if generate_checksum:
-            self.generate_checksum()
-            self._check_complete()
-        else:
-            self._check_complete()
-            if not self.validate():
-                print("WARNING: Encoded segment has invalid checksum")
+        self._check_complete()
 
-        return self._pack() 
+        packed_seg = self._pack_no_checksum() 
+        checksum = CRC16().encode(packed_seg)
+        return Segment._splice_checksum(packed_seg, struct.pack('>H', checksum))
 
-    def _pack(self):
-        return struct.pack('!HxBH', self.seq_num, (self.ack<<2)|(self.syn<<1)|(self.fin), self.checksum) + self.data
+
+    def _pack_no_checksum(self):
+        return struct.pack('!HxBH', self.seq_num, (self.ack<<2)|(self.syn<<1)|(self.fin), 0) + self.data
     
-    def generate_checksum(self):
+    def _generate_checksum(self):
         """Generates the checksum for the segment. Overwrites the previous checksum value"""
         self.checksum = 0
         self._check_complete()
@@ -37,12 +33,12 @@ class Segment:
         #!CHANGE TO PROPER
         self.checksum = len(self.data)
 
-    def validate(self):
-        """Ensures that the checksum is correct"""
-        self._check_complete()
+    # def validate(self):
+    #     """Ensures that the checksum is correct"""
+    #     self._check_complete()
 
-        #!CHANGE TO PROPER
-        return self.checksum == len(self.data)
+    #     #!CHANGE TO PROPER
+    #     return self.checksum == len(self.data)
     
     def type(self):
         if self.syn:
@@ -61,7 +57,7 @@ class Segment:
         return (
             self.seq_num != None and self.ack != None
             and self.syn != None and self.fin != None
-            and self.checksum != None and self.data != None
+            and self.data != None
             and self.ack in (0, 1) and self.syn in (0, 1) and self.fin in (0, 1)
             and self.ack + self.syn + self.fin <= 1
             and 0 <= self.seq_num and self.seq_num < (1<<16)
@@ -71,21 +67,21 @@ class Segment:
         if not self._is_complete():
             raise InvalidSegmentError("Segment has missing or invalid fields")
     
-    
-    
     @staticmethod 
     def decode(buffer : bytes): 
-        """Parse a sequence of bytes into a segment. Returns None if the segment
-        header is invalid. However, a fully formed segment with corrupted data
-        (or checksum) is still accepted."""
+        """Parse a sequence of bytes into a segment. Returns a 
+        tuple of the decoded segment and whether corruption was detected.
+        Decoded segment is None if errors are irrecoverable (i.e. there are 
+        header errors, not just payload errors). With out PLC corruption module 
+        None should never be a return value.
+        """
 
         if len(buffer) < 6:
             raise InvalidSegmentError(f"Data is too short to be a segment")
         
-        
         data = buffer[6:]
         seq_num, pad, flags, checksum = struct.unpack('!HBBH', buffer[:6])
-        checksum_valid = CRC16().verify(buffer[:4] + b'\x00\x00' + buffer[6:], checksum)
+        checksum_valid = CRC16().verify(Segment._splice_checksum(buffer, b'\x00\x00'), checksum)
 
         if (flags & 0xf8) or pad != 0:
             return None, False
@@ -94,7 +90,7 @@ class Segment:
         if (ack + syn + fin > 1):
             return None, False
 
-        return Segment(seq_num, ack, syn, fin, data, checksum), checksum_valid
+        return Segment(seq_num, ack, syn, fin, data), checksum_valid
     
     @staticmethod 
     def create(seq_num, type : str, data: bytes = b''):
@@ -111,6 +107,11 @@ class Segment:
             raise RuntimeError('Unexpected type')
         
         return Segment(seq_num, *flags, data)
+    
+    @staticmethod
+    def _splice_checksum(buffer : bytes, checksum : bytes):
+        assert len(checksum) == 2
+        return buffer[:4] + checksum + buffer[6:]
 
 
 def wrap_add(s, n):
