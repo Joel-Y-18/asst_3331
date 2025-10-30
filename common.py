@@ -82,16 +82,19 @@ class Segment:
         if len(buffer) < 6:
             raise InvalidSegmentError(f"Data is too short to be a segment")
         
+        
         data = buffer[6:]
         seq_num, pad, flags, checksum = struct.unpack('!HBBH', buffer[:6])
+        checksum_valid = CRC16().verify(buffer[:4] + b'\x00\x00' + buffer[6:], checksum)
+
         if (flags & 0xf8) or pad != 0:
-            return None
+            return None, False
 
         ack, syn, fin = (flags>>2) & 1, (flags>>1) & 1, flags & 1 
         if (ack + syn + fin > 1):
-            return None
+            return None, False
 
-        return Segment(seq_num, ack, syn, fin, data, checksum)
+        return Segment(seq_num, ack, syn, fin, data, checksum), checksum_valid
     
     @staticmethod 
     def create(seq_num, type : str, data: bytes = b''):
@@ -127,18 +130,67 @@ def wrap_cmp(s, n):
         return 0
     else:
         return 1
+    
+
+class CRC16:
+    def __init__(self, polynom = 0x16F63):
+        self.polynom = polynom
+
+    def encode(self, data : bytes):
+        return self._get_remainder(data, 0)
+        
+    def verify(self, data, checksum):
+        return self._get_remainder(data, checksum) == 0
+    
+    def _get_remainder(self, data, initial_remainder):
+        if len(data) == 0:
+            raise RuntimeError('cannot generate checksum for 0-length data')
+        
+        datasz = len(data)
+        mdata = bytearray(data)
+        mdata += struct.pack('>H', initial_remainder)
+        
+        byteptr = 0
+        bitshift = 0
+        while True:
+            while byteptr != datasz and mdata[byteptr] == 0:
+                byteptr += 1
+                bitshift = 0
+            if byteptr == datasz:
+                break
+            
+            while (mdata[byteptr] & (1<<(7-bitshift))) == 0:
+                bitshift += 1
+            assert bitshift < 8, f'error in bit shift'
+            
+            self.xor(mdata, byteptr, bitshift)
+        
+        return struct.unpack('>H', mdata[-2:])[0]
+    
+    def xor(self, msg, byte, bitshift):
+        polynom_bytes = struct.pack('>I', self.polynom<<(32-self.polynom.bit_length())>>bitshift)[:3] # drop last byte
+        for i, j in zip(range(byte, byte + 3), range(0, 3)):
+            msg[i] ^= polynom_bytes[j]
 
 if __name__ == '__main__':
-    exit()
+    # exit()
 
-    def segment_test(s1):
-        print("Original", s1.seq_num, s1.ack, s1.syn, s1.fin, s1.checksum, s1.data)
-        encoded = s1.encode()
-        print(encoded)
-        decoded = Segment.decode(encoded)
-        print("Decoded", decoded.seq_num, decoded.ack, decoded.syn, decoded.fin, decoded.checksum, decoded.data)
-        print()
+    # def segment_test(s1):
+    #     print("Original", s1.seq_num, s1.ack, s1.syn, s1.fin, s1.checksum, s1.data)
+    #     encoded = s1.encode()
+    #     print(encoded)
+    #     decoded = Segment.decode(encoded)
+    #     print("Decoded", decoded.seq_num, decoded.ack, decoded.syn, decoded.fin, decoded.checksum, decoded.data)
+    #     print()
 
-    segment_test(Segment(12, 1, 0, 1, b'\x01\x01\x01'))
-    segment_test(Segment((1<<16)-1, 0, 0, 1, b''))
-    segment_test(Segment(0, 1, 1, 1, b'\x00\x00'))
+    # segment_test(Segment(12, 1, 0, 1, b'\x01\x01\x01'))
+    # segment_test(Segment((1<<16)-1, 0, 0, 1, b''))
+    # segment_test(Segment(0, 1, 1, 1, b'\x00\x00'))
+    
+    crc = CRC16()
+
+    msg = b'the big brown fox'#'1'.encode('ascii')
+    checksum = crc.encode(msg)
+    verify = crc.verify(msg, checksum)
+    print(f'checksum={checksum:x}; passed={verify}')
+    

@@ -26,7 +26,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/receiver.py",
             "console": "integratedTerminal",
-            "args": ["14000", "12000", "output/test_out.txt", "1000"]
+            "args": ["14000", "12000", "output/rfc_793_out.txt", "1000"]
         }
     ]
 }

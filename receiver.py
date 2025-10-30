@@ -6,6 +6,7 @@ import time
 from common import * 
 import threading 
 from collections import deque 
+from select import select
 
 random.seed()
     
@@ -83,9 +84,27 @@ class Receiver:
         print('entering timed wait')
         self.scb.state = 'time_wait'
         threading.Timer(2*self.msl / 1000, self.close).start() #!! check this is actually 2s
-        
-        while True:
-            seg = self.recv()
+
+
+        # without using nonblocking sockets the main thread 
+        # may get stuck in a recv system call. The only way to kill
+        # the program from the timer thread when this occurs is with a
+        # hard kill (os._exit()), which we don't want. Hence, we use nonblocking
+        # sockets 
+        self.scb.acquire()
+        while self.scb.state != 'closed':
+            self.scb.release()
+
+            read, write, error = select([self.sock], [], [], 0.001)
+            if not read:
+                self.scb.acquire()
+                continue
+
+            data, address = self.sock.recvfrom(self.BUFSZ, SOCK_NONBLOCK)
+            seg = self._process_sock_output(data, address)
+            if not seg:
+                self.scb.acquire()
+                continue
 
             if seg.type() != 'FIN':
                 self.panic(f"expected a fin, received {seg.type()}")
@@ -94,7 +113,10 @@ class Receiver:
 
             self.send(Segment.create(wrap_add(seg.seq_num, 1), 'ack'))
 
+            self.scb.acquire()
 
+        self.scb.release()
+          
         # at this point there is concurrency and we start using the scb lock
         # Does not work because may be stuck in recv. Instead timer thread forces exit
         # self.scb.acquire()
@@ -115,7 +137,6 @@ class Receiver:
     def close(self):
         self.scb.acquire()
         self.scb.state = 'closed'
-        exit()
         self.scb.release()
         
     def process_data_segment(self, segment : Segment):
@@ -178,17 +199,34 @@ class Receiver:
         """Guarantees that the received segment is uncorrupted"""
         while True:
             data, address = self.sock.recvfrom(self.BUFSZ)
-            if address != self.dest_address:
-                print("WARNING: Received data from unexpected address")
-                continue 
+            seg = self._process_sock_output(data, address)
+            if seg:
+                return seg
 
-            seg = Segment.decode(data)
-            if seg == None or not seg.validate():
-                self._write_log('rcv', 'cor', seg)
-                continue 
+            # if address != self.dest_address:
+            #     print("WARNING: Received data from unexpected address")
+            #     continue 
 
-            self._write_log('rcv', 'ok', seg)
-            return seg
+            # seg = Segment.decode(data)
+            # if seg == None or not seg.validate():
+            #     self._write_log('rcv', 'cor', seg)
+            #     continue 
+
+            # self._write_log('rcv', 'ok', seg)
+            # return seg
+    
+    def _process_sock_output(self, data : bytes, address):
+        if address != self.dest_address:
+            print("WARNING: Received data from unexpected address")
+            return None
+
+        seg = Segment.decode(data)
+        if seg == None or not seg.validate():
+            self._write_log('rcv', 'cor', seg)
+            return None
+
+        self._write_log('rcv', 'ok', seg)
+        return seg
 
     def _write_log(self, type, action, seg):
         elapsed = 0.0
@@ -225,11 +263,11 @@ with open('receiver_log.txt', 'wt') as logf, open(txt_file_to_receive, 'wt') as 
     
     receiver.run()
     
-    logf.write(f'Original data received:               {receiver.stats.original_bytes:6d}\n')
-    logf.write(f'Total data received:                  {receiver.stats.tot_bytes:6d}\n')
-    logf.write(f'Original segments received:           {receiver.stats.original_segs:6d}\n')
-    logf.write(f'Total segments received:              {receiver.stats.tot_segs:6d}\n')
-    logf.write(f'Corrupted segments discarded:          {receiver.stats.cor_segs:6d}\n')
-    logf.write(f'Duplicate segments received:             {receiver.stats.dup_segs:6d}\n')
-    logf.write(f'Total acks sent:          {receiver.stats.tot_acks:6d}\n')
-    logf.write(f'Duplicate acks sent:         {receiver.stats.dup_acks:6d}\n')
+    logf.write(f'Original data received:          {receiver.stats.original_bytes:6d}\n')
+    logf.write(f'Total data received:             {receiver.stats.tot_bytes:6d}\n')
+    logf.write(f'Original segments received:      {receiver.stats.original_segs:6d}\n')
+    logf.write(f'Total segments received:         {receiver.stats.tot_segs:6d}\n')
+    logf.write(f'Corrupted segments discarded     {receiver.stats.cor_segs:6d}\n')
+    logf.write(f'Duplicate segments received:     {receiver.stats.dup_segs:6d}\n')
+    logf.write(f'Total acks sent:                 {receiver.stats.tot_acks:6d}\n')
+    logf.write(f'Duplicate acks sent:             {receiver.stats.dup_acks:6d}\n')

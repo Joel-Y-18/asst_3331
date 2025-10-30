@@ -60,7 +60,7 @@ class PLCModule:
             
             if self._flip(self.rlp):
 
-                self._write_log('rcv', 'drp', Segment.decode(data))
+                self._write_log('rcv', 'drp', Segment.decode(data))  #CAREFUL, THE SEGMENT MAY BE CORRUPTED HERE
                 self.stats.rev_drp += 1
             else:
                 break 
@@ -374,18 +374,18 @@ with open('sender_log.txt', 'wt') as logf, open(txt_file_to_send, 'r') as textf:
     
     sender.run()
     
-    logf.write(f'Original data sent:               {sender.stats.original_bytes_sent:6d}\n')
-    logf.write(f'Total data sent:                  {sender.stats.total_bytes_sent:6d}\n')
-    logf.write(f'Original segments sent:           {sender.stats.original_segs_sent:6d}\n')
-    logf.write(f'Total segments sent:              {sender.stats.total_segs_sent:6d}\n')
-    logf.write(f'Timeout retransmissions:          {sender.stats.timeouts:6d}\n')
-    logf.write(f'Fast retransmissions:             {sender.stats.fast_retransmissions:6d}\n')
-    logf.write(f'Duplicate acks received:          {sender.stats.dup_acks:6d}\n')
-    logf.write(f'Corrupted acks discarded:         {sender.stats.cor_acks:6d}\n')
-    logf.write(f'PLC forward segments dropped:     {plc.stats.fwd_drp:6d}\n')
-    logf.write(f'PLC forward segments corrupted:   {plc.stats.fwd_cor:6d}\n')
-    logf.write(f'PLC reverse segments dropped:     {plc.stats.rev_drp:6d}\n')
-    logf.write(f'PLC reverse segments corrupted:   {plc.stats.rev_cor:6d}\n')
+    logf.write(f'Original data sent:            {sender.stats.original_bytes_sent:6d}\n')
+    logf.write(f'Total data sent:               {sender.stats.total_bytes_sent:6d}\n')
+    logf.write(f'Original segments sent:        {sender.stats.original_segs_sent:6d}\n')
+    logf.write(f'Total segments sent:           {sender.stats.total_segs_sent:6d}\n')
+    logf.write(f'Timeout retransmissions:       {sender.stats.timeouts:6d}\n')
+    logf.write(f'Fast retransmissions:          {sender.stats.fast_retransmissions:6d}\n')
+    logf.write(f'Duplicate acks received:       {sender.stats.dup_acks:6d}\n')
+    logf.write(f'Corrupted acks discarded:      {sender.stats.cor_acks:6d}\n')
+    logf.write(f'PLC forward segments dropped:  {plc.stats.fwd_drp:6d}\n')
+    logf.write(f'PLC forward segments corrupted:{plc.stats.fwd_cor:6d}\n')
+    logf.write(f'PLC reverse segments dropped:  {plc.stats.rev_drp:6d}\n')
+    logf.write(f'PLC reverse segments corrupted:{plc.stats.rev_cor:6d}\n')
 
 # Testing
 # plc = PLCModule(None, None, 0,0,0,0)
