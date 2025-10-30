@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File with Arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": "${command:pickArgs}"
+        },
+        {
+            "name": "Debug Sender",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/sender.py",
+            "console": "integratedTerminal",
+            "args": ["12000", "14000", "output/test_in.txt", "1000", "10000", "0", "0", "0.1", "0.1"]
+        },
+        {
+            "name": "Debug Receiver",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/receiver.py",
+            "console": "integratedTerminal",
+            "args": ["14000", "12000", "output/test_out.txt", "1000"]
+        }
+    ]
+}
