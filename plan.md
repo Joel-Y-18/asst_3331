@@ -22,3 +22,5 @@ Left to do:
         - Write a script which diffs results and can have a lot of different settings for win_size etc.
     - Am I sure that triple dup acks work? Maybe test with manual tester
     - Am I sure that receiver does nothing on receiving a corrupted segment?
+    - VALIDATE SEGMENT STRUCTURE WITH URPMON ON CSE
+    - MUST CHANGE ELAPSED TIME TO START AT 0.00

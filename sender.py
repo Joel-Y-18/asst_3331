@@ -32,9 +32,6 @@ class PLCModule:
         self.BUFSZ = 2048
     
     def send(self, seg : Segment): 
-        if self.time_start == None:
-            self.time_start = time.perf_counter_ns()
-        
         if self._flip(self.flp):
             self._write_log('snd', 'drp', seg)
             self.stats.fwd_drp += 1
@@ -83,9 +80,10 @@ class PLCModule:
                 return data
     
     def _write_log(self, type, action, seg):
-        elapsed = 0.0
+        elapsed = None
         if self.time_start == None:
-            raise RuntimeError('tried to log with start time None')
+            self.time_start = time.perf_counter_ns()
+            elapsed = 0.0
         else:
             elapsed = (time.perf_counter_ns() - self.time_start) / 1e6
         
@@ -136,6 +134,17 @@ class Sender:
             self.fast_retransmissions = 0
             self.dup_acks = 0
             self.cor_acks = 0
+            
+            # all stats except total_segs/bytes_sent are updated
+            # from the main thread. Hence the lock is only used for
+            # these two stats
+            self.lock = threading.Lock()
+
+        def acquire(self):
+            self.lock.acquire()
+
+        def release(self):
+            self.lock.release()
 
     def __init__(self, textf : _io.TextIOWrapper, max_win, rto, plc : PLCModule, mss = 1000):
         self.textf = textf
@@ -191,6 +200,7 @@ class Sender:
         """A custom stop-wait exchange which bypasses the unacked queue and uses a special retransmission system
         Intended for special one-byte segments (SYN and FIN)"""
 
+        self.stats.original_segs_sent += 1
         self.send(seg)
         self._set_stop_wait_rttimer(seg)
         
@@ -227,6 +237,7 @@ class Sender:
 
     def stop_wait_timeout(self, seg):
         print('stop_wait_timeout called')
+        self.stats.timeouts += 1
         self._set_stop_wait_rttimer(seg)
         self.send(seg)
     
@@ -252,6 +263,8 @@ class Sender:
                     self._set_rttimer()
 
                 self.scb.release()
+                self.stats.original_segs_sent += 1
+                self.stats.original_bytes_sent += len(seg.data)
                 self.send(seg)
                 self.scb.acquire()
 
@@ -270,6 +283,7 @@ class Sender:
             return 
         if ack_seq_num == self.scb.snd_base:
             print(f"Dup ack received for seq num {self.scb.snd_base}")
+            self.stats.dup_acks += 1
             self.scb.dup_acks += 1
             if self.scb.dup_acks == 3:
                 self.scb.release()
@@ -339,6 +353,10 @@ class Sender:
         self.rtlock.release()
 
     def send(self, segment : Segment):
+        self.stats.acquire()
+        self.stats.total_segs_sent += 1
+        self.stats.total_bytes_sent += len(segment.data)
+        self.stats.release()
         plc.send(segment)
 
     def recv(self):
