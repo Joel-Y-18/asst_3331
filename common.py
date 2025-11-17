@@ -218,39 +218,4 @@ class CRC16:
         # perform xor
         for i, j in zip(range(byte, byte + 3), range(0, 3)):
             msg[i] ^= polynom_bytes[j]
-
-if __name__ == '__main__':
-    import random 
-    import string
-    strs = []
-    for i in range(100):
-        strs.append(bytes().join(random.choices([struct.pack('>B', x) for x in range(256)], k=random.randint(1, 10000)))) 
-    
-
-    for s in strs:
-        crc = CRC16()
-        checksum = crc.encode(s)    
-        
-        valid = crc.verify(s, checksum)
-        assert valid, f'Failed on {s}'
-    # exit()
-
-    # def segment_test(s1):
-    #     print("Original", s1.seq_num, s1.ack, s1.syn, s1.fin, s1.checksum, s1.data)
-    #     encoded = s1.encode()
-    #     print(encoded)
-    #     decoded = Segment.decode(encoded)
-    #     print("Decoded", decoded.seq_num, decoded.ack, decoded.syn, decoded.fin, decoded.checksum, decoded.data)
-    #     print()
-
-    # segment_test(Segment(12, 1, 0, 1, b'\x01\x01\x01'))
-    # segment_test(Segment((1<<16)-1, 0, 0, 1, b''))
-    # segment_test(Segment(0, 1, 1, 1, b'\x00\x00'))
-    
-    # crc = CRC16()
-
-    # msg = b'the big brown fox'#'1'.encode('ascii')
-    # checksum = crc.encode(msg)
-    # verify = crc.verify(msg, checksum)
-    # print(f'checksum={checksum:x}; passed={verify}')
     

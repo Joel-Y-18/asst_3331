@@ -123,7 +123,6 @@ class Receiver:
         self.send(Segment.create(wrap_add(seg.seq_num, 1), 'ack'))
         
         # initiate timed wait state
-        print('entering timed wait')
         self.scb.state = 'time_wait'
         wait_timer = threading.Timer(2*self.MSL / 1000, self.close)
         wait_timer.start()
@@ -184,17 +183,15 @@ class Receiver:
         
         if len(segment.data) == 0:
             # packet is nonsensical
-            print('dropping 0-length data packet')
+            print('WARNING: dropping 0-length data packet')
             return
         if wrap_cmp(segment.seq_num, self.scb.rcv_base) == -1:
             # packet has already been received
-            print('dropping packet beneath receive window')
             self.stats.dup_segs += 1
             return
         if wrap_cmp(segment.end_seq_num(), 
                 wrap_add(self.scb.rcv_base, self.max_win)) == 1:
             # sender's receive window must be bigger than ours; drop packet
-            print('dropping packet exceeding receive window')
             return
 
         if segment.seq_num == self.scb.rcv_base:
@@ -204,8 +201,6 @@ class Receiver:
             self.stats.original_segs += 1
             self.stats.original_bytes += len(segment.data)
             self.scb.buffer.appendleft(segment)
-            print(f'processing segment [{segment.seq_num, segment.end_seq_num()})'
-                  f' at rcvbase. {self._describe_buffer()}')
             
             # pop in-order packets from buffer, updating rcv_base
             while (
@@ -236,7 +231,6 @@ class Receiver:
                                    f'[{segment.seq_num, segment.end_seq_num()}). '
                                    f'{self._describe_buffer()}')
 
-                    print('received duplicate out of order segment')
                     self.stats.dup_segs += 1
                     insert_at_end = False
                     break  
@@ -252,7 +246,6 @@ class Receiver:
                     
                     # this is a new segment; insert it into buffer
                     self.scb.buffer.insert(i, segment)
-                    print(f'inserting segment [{segment.seq_num, segment.end_seq_num()}) at position {i}. {self._describe_buffer()}')
                     self.stats.original_segs += 1
                     self.stats.original_bytes += len(segment.data)
                     insert_at_end = False
@@ -343,8 +336,6 @@ class Receiver:
 
         self.logf.write(log_str)
         self.logf.flush()
-        
-        print(log_str, end='')
             
         
 

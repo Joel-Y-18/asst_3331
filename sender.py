@@ -8,7 +8,6 @@ import threading
 from collections import deque 
 
 random.seed()
-verbose = False
 
 class PLCModule:
     """
@@ -127,8 +126,6 @@ class PLCModule:
         self.logf.write(log_str)
         self.logf.flush()
         
-        print(log_str, end='')
-        
     def _corrupt(self, data : bytes):
         """
         Flips 1 bit in a byte sequence
@@ -137,19 +134,9 @@ class PLCModule:
         corruption_idx = random.randrange(self.HEADER_SZ, len(data))
         corruption_bit = random.randrange(0, 8)
         
-        if verbose: 
-            print("Initial data:   " 
-              + '_'.join(bin(x)[2:].zfill(8) for x in data) 
-              + f" will be corrupted at "
-              + f"{corruption_idx*8+corruption_bit}={corruption_idx,corruption_bit}")
-
         corrupted = data[:corruption_idx] \
                     + bytes((data[corruption_idx] ^ (1 << (7-corruption_bit)),)) \
                     + data[corruption_idx+1:]
-
-        if verbose: 
-            print("Corrupted data: " 
-                  + '_'.join(bin(x)[2:].zfill(8) for x in corrupted))
 
         return corrupted
     
@@ -253,8 +240,6 @@ class Sender:
         self.scb.acquire()
         self.scb.state = 'est'
         self.scb.release()
-        
-        print('Passed stop-wait')
 
         # Note: we do not multithread sending and receiving acks. Rather,
         # we first send out our entire window, then listen for an ack.
@@ -294,7 +279,6 @@ class Sender:
         
         # loop waiting for the ack
         while self.recv().seq_num != wrap_add(seg.seq_num, 1):
-            print(f"Failed to match to {wrap_add(seg.seq_num, 1)}")
             pass
         
         self._stop_rttimer()
@@ -317,8 +301,6 @@ class Sender:
         self.rtlock.release()
     
     def _set_stop_wait_rttimer(self, seg):
-        print(f'_set_stop_wait_rttimer called with rto {self.rto}')
-        
         self.rtlock.acquire()
         if self.rttimer != None:
             self.rttimer.cancel()
@@ -327,7 +309,6 @@ class Sender:
         self.rtlock.release()
 
     def stop_wait_timeout(self, seg):
-        print('stop_wait_timeout called')
         self.stats.timeouts += 1
         self._set_stop_wait_rttimer(seg)
         self.send(seg)
@@ -388,7 +369,6 @@ class Sender:
             return 
         if ack_seq_num == self.scb.snd_base:
             # duplicate ack received
-            print(f"Dup ack received for seq num {self.scb.snd_base}")
             self.stats.dup_acks += 1
             self.scb.dup_acks += 1
             if self.scb.dup_acks == 3:
@@ -427,9 +407,6 @@ class Sender:
             # This should never be necessary in our protocol, but is added for generality
             trim_len = wrap_sub(ack_seq_num, seg.seq_num)
             if trim_len != 0:
-                print(f'Trimming segment [{seg.seq_num}, {seg.end_seq_num()})'
-                      f' due to ack {ack_seq_num}.'
-                      f'{trim_len} data bytes are being trimmed')
                 seg.data = seg.data[trim_len:]
                 seg.seq_num = ack_seq_num
 
@@ -441,7 +418,6 @@ class Sender:
         """
         Retransmits on triple duplicate ack
         """
-        print('triple_dup_ack called')
         if self.retransmit():
             self.stats.fast_retransmissions += 1
 
