@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<office:document xmlns:officeooo="http://openoffice.org/2009/office" xmlns:css3t="http://www.w3.org/TR/css3-text/" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rpt="http://openoffice.org/2005/report" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:xforms="http://www.w3.org/2002/xforms" office:version="1.3" office:mimetype="application/vnd.oasis.opendocument.text">
+ <office:meta><dc:date>2025-11-17T13:38:55.716857336</dc:date><meta:editing-duration>PT1H14M16S</meta:editing-duration><meta:editing-cycles>12</meta:editing-cycles><meta:generator>LibreOffice/7.3.7.2$Linux_X86_64 LibreOffice_project/30$Build-2</meta:generator><meta:document-statistic meta:table-count="0" meta:image-count="0" meta:object-count="0" meta:page-count="3" meta:paragraph-count="33" meta:word-count="2099" meta:character-count="12581" meta:non-whitespace-character-count="10501"/></office:meta>
+ <office:settings>
+  <config:config-item-set config:name="ooo:view-settings">
+   <config:config-item config:name="ViewAreaTop" config:type="long">168</config:config-item>
+   <config:config-item config:name="ViewAreaLeft" config:type="long">0</config:config-item>
+   <config:config-item config:name="ViewAreaWidth" config:type="long">48870</config:config-item>
+   <config:config-item config:name="ViewAreaHeight" config:type="long">25322</config:config-item>
+   <config:config-item config:name="ShowRedlineChanges" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="InBrowseMode" config:type="boolean">false</config:config-item>
+   <config:config-item-map-indexed config:name="Views">
+    <config:config-item-map-entry>
+     <config:config-item config:name="ViewId" config:type="string">view2</config:config-item>
+     <config:config-item config:name="ViewLeft" config:type="long">23414</config:config-item>
+     <config:config-item config:name="ViewTop" config:type="long">14852</config:config-item>
+     <config:config-item config:name="VisibleLeft" config:type="long">0</config:config-item>
+     <config:config-item config:name="VisibleTop" config:type="long">168</config:config-item>
+     <config:config-item config:name="VisibleRight" config:type="long">48869</config:config-item>
+     <config:config-item config:name="VisibleBottom" config:type="long">25488</config:config-item>
+     <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
+     <config:config-item config:name="ViewLayoutColumns" config:type="short">1</config:config-item>
+     <config:config-item config:name="ViewLayoutBookMode" config:type="boolean">false</config:config-item>
+     <config:config-item config:name="ZoomFactor" config:type="short">100</config:config-item>
+     <config:config-item config:name="IsSelectedFrame" config:type="boolean">false</config:config-item>
+     <config:config-item config:name="KeepRatio" config:type="boolean">false</config:config-item>
+     <config:config-item config:name="AnchoredTextOverflowLegacy" config:type="boolean">false</config:config-item>
+    </config:config-item-map-entry>
+   </config:config-item-map-indexed>
+  </config:config-item-set>
+  <config:config-item-set config:name="ooo:configuration-settings">
+   <config:config-item config:name="PrintProspect" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintReversed" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintSingleJobs" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintLeftPages" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintTables" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintControls" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintPageBackground" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintDrawings" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintBlackFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintAnnotationMode" config:type="short">0</config:config-item>
+   <config:config-item config:name="PrintTextPlaceholder" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ProtectFields" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ProtectBookmarks" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmptyDbFieldHidesPara" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="DisableOffPagePositioning" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="SubtractFlysAnchoredAtFlys" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PropLineSpacingShrinksFirstLine" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="ApplyParagraphMarkFormatToNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="GutterAtTop" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="TreatSingleColumnBreakAsPageBreak" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmbedSystemFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmbedComplexScriptFonts" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="EmbedAsianScriptFonts" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="EmbedLatinScriptFonts" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="EmbedOnlyUsedFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ContinuousEndnotes" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmbedFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ClippedPictures" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="FloattableNomargins" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UnbreakableNumberings" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="HeaderSpacingBelowLastPara" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AllowPrintJobCancel" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="UseOldPrinterMetrics" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="TabOverMargin" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="TabsRelativeToIndent" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="UseOldNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="InvertBorderSpacing" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintPaperFromSetup" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UpdateFromTemplate" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="CurrentDatabaseCommandType" config:type="int">0</config:config-item>
+   <config:config-item config:name="LinkUpdateMode" config:type="short">1</config:config-item>
+   <config:config-item config:name="AddParaSpacingToTableCells" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="FrameAutowidthWithMorePara" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="CurrentDatabaseCommand" config:type="string"/>
+   <config:config-item config:name="PrinterIndependentLayout" config:type="string">high-resolution</config:config-item>
+   <config:config-item config:name="ApplyUserData" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintFaxName" config:type="string"/>
+   <config:config-item config:name="CurrentDatabaseDataSource" config:type="string"/>
+   <config:config-item config:name="ClipAsCharacterAnchoredWriterFlyFrames" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="IsKernAsianPunctuation" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="SaveThumbnail" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="UseFormerTextWrapping" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AddExternalLeading" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AddParaTableSpacing" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="StylesNoDefault" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ChartAutoUpdate" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrinterSetup" config:type="base64Binary"/>
+   <config:config-item config:name="AddParaTableSpacingAtStart" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="Rsid" config:type="int">1255693</config:config-item>
+   <config:config-item config:name="EmbeddedDatabaseName" config:type="string"/>
+   <config:config-item config:name="FieldAutoUpdate" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="OutlineLevelYieldsNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="FootnoteInColumnToPageEnd" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AlignTabStopPosition" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="CharacterCompressionType" config:type="short">0</config:config-item>
+   <config:config-item config:name="PrinterName" config:type="string"/>
+   <config:config-item config:name="SaveGlobalDocumentLinks" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrinterPaperFromSetup" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UseFormerLineSpacing" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AddParaLineSpacingToTableCells" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="UseFormerObjectPositioning" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintGraphics" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="SurroundTextWrapSmall" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ConsiderTextWrapOnObjPos" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="MsWordCompTrailingBlanks" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="TabAtLeftIndentForParagraphsInList" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintRightPages" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="TabOverSpacing" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="IgnoreFirstLineIndentInNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="RedlineProtectionKey" config:type="base64Binary"/>
+   <config:config-item config:name="DoNotJustifyLinesWithManualBreak" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintProspectRTL" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintEmptyPages" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="DoNotResetParaAttrsForNumFont" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AddFrameOffsets" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="IgnoreTabsAndBlanksForLineCalculation" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="LoadReadonly" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="DoNotCaptureDrawObjsOnPage" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AddVerticalFrameOffsets" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UnxForceZeroExtLeading" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="IsLabelDocument" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="TableRowKeep" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="RsidRoot" config:type="int">874449</config:config-item>
+   <config:config-item config:name="PrintHiddenText" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ProtectForm" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="MsWordCompMinLineHeightByFly" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="BackgroundParaOverDrawings" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="SaveVersionOnClose" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="MathBaselineAlignment" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="SmallCapsPercentage66" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="CollapseEmptyCellPara" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="TabOverflow" config:type="boolean">true</config:config-item>
+  </config:config-item-set>
+ </office:settings>
+ <office:scripts>
+  <office:script script:language="ooo:Basic">
+   <ooo:libraries xmlns:ooo="http://openoffice.org/2004/office" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <ooo:library-embedded ooo:name="Standard"/>
+   </ooo:libraries>
+  </office:script>
+ </office:scripts>
+ <office:font-face-decls>
+  <style:font-face style:name="Carlito" svg:font-family="Carlito" style:font-family-generic="swiss" style:font-pitch="variable"/>
+  <style:font-face style:name="Liberation Sans" svg:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="swiss" style:font-pitch="variable"/>
+  <style:font-face style:name="Liberation Serif" svg:font-family="&apos;Liberation Serif&apos;" style:font-family-generic="roman" style:font-pitch="variable"/>
+  <style:font-face style:name="Lohit Devanagari" svg:font-family="&apos;Lohit Devanagari&apos;"/>
+  <style:font-face style:name="Lohit Devanagari1" svg:font-family="&apos;Lohit Devanagari&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+  <style:font-face style:name="Noto Sans CJK SC" svg:font-family="&apos;Noto Sans CJK SC&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+  <style:font-face style:name="Noto Serif CJK SC" svg:font-family="&apos;Noto Serif CJK SC&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+  <style:font-face style:name="Source Code Pro" svg:font-family="&apos;Source Code Pro&apos;" style:font-pitch="fixed"/>
+ </office:font-face-decls>
+ <office:styles>
+  <style:default-style style:family="graphic">
+   <style:graphic-properties svg:stroke-color="#3465a4" draw:fill-color="#729fcf" fo:wrap-option="no-wrap" draw:shadow-offset-x="0.3cm" draw:shadow-offset-y="0.3cm" draw:start-line-spacing-horizontal="0.283cm" draw:start-line-spacing-vertical="0.283cm" draw:end-line-spacing-horizontal="0.283cm" draw:end-line-spacing-vertical="0.283cm" style:flow-with-text="false"/>
+   <style:paragraph-properties style:text-autospace="ideograph-alpha" style:line-break="strict" style:writing-mode="lr-tb" style:font-independent-line-spacing="false">
+    <style:tab-stops/>
+   </style:paragraph-properties>
+   <style:text-properties style:use-window-font-color="true" loext:opacity="0%" style:font-name="Liberation Serif" fo:font-size="12pt" fo:language="en" fo:country="AU" style:letter-kerning="true" style:font-name-asian="Noto Serif CJK SC" style:font-size-asian="10.5pt" style:language-asian="zh" style:country-asian="CN" style:font-name-complex="Lohit Devanagari1" style:font-size-complex="12pt" style:language-complex="hi" style:country-complex="IN"/>
+  </style:default-style>
+  <style:default-style style:family="paragraph">
+   <style:paragraph-properties fo:hyphenation-ladder-count="no-limit" style:text-autospace="ideograph-alpha" style:punctuation-wrap="hanging" style:line-break="strict" style:tab-stop-distance="1.251cm" style:writing-mode="page"/>
+   <style:text-properties style:use-window-font-color="true" loext:opacity="0%" style:font-name="Liberation Serif" fo:font-size="12pt" fo:language="en" fo:country="AU" style:letter-kerning="true" style:font-name-asian="Noto Serif CJK SC" style:font-size-asian="10.5pt" style:language-asian="zh" style:country-asian="CN" style:font-name-complex="Lohit Devanagari1" style:font-size-complex="12pt" style:language-complex="hi" style:country-complex="IN" fo:hyphenate="false" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2" loext:hyphenation-no-caps="false"/>
+  </style:default-style>
+  <style:default-style style:family="table">
+   <style:table-properties table:border-model="collapsing"/>
+  </style:default-style>
+  <style:default-style style:family="table-row">
+   <style:table-row-properties fo:keep-together="auto"/>
+  </style:default-style>
+  <style:style style:name="Standard" style:family="paragraph" style:class="text"/>
+  <style:style style:name="Heading" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Text_20_body" style:class="text">
+   <style:paragraph-properties fo:margin-top="0.423cm" fo:margin-bottom="0.212cm" style:contextual-spacing="false" fo:keep-with-next="always"/>
+   <style:text-properties style:font-name="Liberation Sans" fo:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="swiss" style:font-pitch="variable" fo:font-size="14pt" style:font-name-asian="Noto Sans CJK SC" style:font-family-asian="&apos;Noto Sans CJK SC&apos;" style:font-family-generic-asian="system" style:font-pitch-asian="variable" style:font-size-asian="14pt" style:font-name-complex="Lohit Devanagari1" style:font-family-complex="&apos;Lohit Devanagari&apos;" style:font-family-generic-complex="system" style:font-pitch-complex="variable" style:font-size-complex="14pt"/>
+  </style:style>
+  <style:style style:name="Text_20_body" style:display-name="Text body" style:family="paragraph" style:parent-style-name="Standard" style:class="text">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0.247cm" style:contextual-spacing="false" fo:line-height="115%"/>
+  </style:style>
+  <style:style style:name="List" style:family="paragraph" style:parent-style-name="Text_20_body" style:class="list">
+   <style:text-properties style:font-size-asian="12pt" style:font-name-complex="Lohit Devanagari" style:font-family-complex="&apos;Lohit Devanagari&apos;"/>
+  </style:style>
+  <style:style style:name="Caption" style:family="paragraph" style:parent-style-name="Standard" style:class="extra">
+   <style:paragraph-properties fo:margin-top="0.212cm" fo:margin-bottom="0.212cm" style:contextual-spacing="false" text:number-lines="false" text:line-number="0"/>
+   <style:text-properties fo:font-size="12pt" fo:font-style="italic" style:font-size-asian="12pt" style:font-style-asian="italic" style:font-name-complex="Lohit Devanagari" style:font-family-complex="&apos;Lohit Devanagari&apos;" style:font-size-complex="12pt" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="Index" style:family="paragraph" style:parent-style-name="Standard" style:class="index">
+   <style:paragraph-properties text:number-lines="false" text:line-number="0"/>
+   <style:text-properties style:font-size-asian="12pt" style:font-name-complex="Lohit Devanagari" style:font-family-complex="&apos;Lohit Devanagari&apos;"/>
+  </style:style>
+  <style:style style:name="Internet_20_link" style:display-name="Internet link" style:family="text">
+   <style:text-properties fo:color="#000080" loext:opacity="100%" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color"/>
+  </style:style>
+  <text:outline-style style:name="Outline">
+   <text:outline-level-style text:level="1" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="2" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="3" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="4" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="5" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="6" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="7" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="8" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="9" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="10" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+  </text:outline-style>
+  <text:notes-configuration text:note-class="footnote" style:num-format="1" text:start-value="0" text:footnotes-position="page" text:start-numbering-at="document"/>
+  <text:notes-configuration text:note-class="endnote" style:num-format="i" text:start-value="0"/>
+  <text:linenumbering-configuration text:number-lines="false" text:offset="0.499cm" style:num-format="1" text:number-position="left" text:increment="5"/>
+ </office:styles>
+ <office:automatic-styles>
+  <style:style style:name="P1" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="14pt" fo:font-weight="bold" officeooo:rsid="000d57d1" officeooo:paragraph-rsid="000d57d1" style:font-size-asian="14pt" style:font-weight-asian="bold" style:font-size-complex="14pt" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="P2" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="10pt" fo:font-style="italic" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color" fo:font-weight="normal" officeooo:rsid="000d57d1" officeooo:paragraph-rsid="000d57d1" style:font-size-asian="10pt" style:font-style-asian="italic" style:font-weight-asian="normal" style:font-size-complex="10pt" style:font-style-complex="italic" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P3" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="10pt" fo:font-style="italic" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color" fo:font-weight="normal" officeooo:rsid="000d57d1" officeooo:paragraph-rsid="000d57d1" style:font-size-asian="10pt" style:font-style-asian="italic" style:font-weight-asian="normal" style:font-size-complex="10pt" style:font-style-complex="italic" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P4" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="italic" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color" fo:font-weight="normal" officeooo:rsid="000d57d1" officeooo:paragraph-rsid="000d57d1" style:font-size-asian="10.5pt" style:font-style-asian="italic" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-style-complex="italic" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P5" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="italic" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color" fo:font-weight="normal" officeooo:rsid="000dbbed" officeooo:paragraph-rsid="000dbbed" style:font-size-asian="10.5pt" style:font-style-asian="italic" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-style-complex="italic" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P6" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="bold" officeooo:rsid="000d57d1" officeooo:paragraph-rsid="000d57d1" style:font-size-asian="10.5pt" style:font-style-asian="normal" style:font-weight-asian="bold" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="P7" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="normal" officeooo:rsid="000d57d1" officeooo:paragraph-rsid="000d57d1" style:font-size-asian="10.5pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P8" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="normal" officeooo:rsid="000d57d1" officeooo:paragraph-rsid="000dbbed" style:font-size-asian="10.5pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P9" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="normal" officeooo:rsid="000dbbed" officeooo:paragraph-rsid="000dbbed" style:font-size-asian="10.5pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P10" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="normal" officeooo:rsid="000fb33b" officeooo:paragraph-rsid="000fb33b" style:font-size-asian="10.5pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P11" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="normal" officeooo:rsid="000fb33b" officeooo:paragraph-rsid="000fc3e4" style:font-size-asian="10.5pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P12" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="normal" officeooo:rsid="000fb33b" officeooo:paragraph-rsid="00112e94" style:font-size-asian="10.5pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P13" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="normal" officeooo:rsid="000fc3e4" officeooo:paragraph-rsid="000fc3e4" style:font-size-asian="10.5pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P14" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="normal" officeooo:rsid="00112e94" officeooo:paragraph-rsid="00112e94" style:font-size-asian="10.5pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P15" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="normal" officeooo:rsid="00112e94" officeooo:paragraph-rsid="000fb33b" style:font-size-asian="10.5pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P16" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="normal" officeooo:rsid="00112e94" officeooo:paragraph-rsid="0013290d" style:font-size-asian="10.5pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="P17" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Carlito" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="none" fo:font-weight="normal" officeooo:rsid="0013290d" officeooo:paragraph-rsid="0013290d" style:font-size-asian="10.5pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="T1" style:family="text">
+   <style:text-properties officeooo:rsid="000dbbed"/>
+  </style:style>
+  <style:style style:name="T2" style:family="text">
+   <style:text-properties officeooo:rsid="000fb33b"/>
+  </style:style>
+  <style:style style:name="T3" style:family="text">
+   <style:text-properties officeooo:rsid="000fc3e4"/>
+  </style:style>
+  <style:style style:name="T4" style:family="text">
+   <style:text-properties officeooo:rsid="0013290d"/>
+  </style:style>
+  <style:style style:name="T5" style:family="text">
+   <style:text-properties style:font-name="Source Code Pro" fo:font-size="10.5pt" style:font-size-complex="10.5pt"/>
+  </style:style>
+  <style:style style:name="T6" style:family="text">
+   <style:text-properties style:font-name="Source Code Pro" fo:font-size="10.5pt" officeooo:rsid="000d57d1" style:font-size-complex="10.5pt"/>
+  </style:style>
+  <style:page-layout style:name="pm1">
+   <style:page-layout-properties fo:page-width="21.001cm" fo:page-height="29.7cm" style:num-format="1" style:print-orientation="portrait" fo:margin-top="1cm" fo:margin-bottom="1cm" fo:margin-left="1cm" fo:margin-right="1cm" style:writing-mode="lr-tb" style:footnote-max-height="0cm" loext:margin-gutter="0cm">
+    <style:footnote-sep style:width="0.018cm" style:distance-before-sep="0.101cm" style:distance-after-sep="0.101cm" style:line-style="solid" style:adjustment="left" style:rel-width="25%" style:color="#000000"/>
+   </style:page-layout-properties>
+   <style:header-style/>
+   <style:footer-style/>
+  </style:page-layout>
+  <style:style style:name="dp1" style:family="drawing-page">
+   <style:drawing-page-properties draw:background-size="full"/>
+  </style:style>
+ </office:automatic-styles>
+ <office:master-styles>
+  <style:master-page style:name="Standard" style:page-layout-name="pm1" draw:style-name="dp1"/>
+ </office:master-styles>
+ <office:body>
+  <office:text text:use-soft-page-breaks="true">
+   <text:sequence-decls>
+    <text:sequence-decl text:display-outline-level="0" text:name="Illustration"/>
+    <text:sequence-decl text:display-outline-level="0" text:name="Table"/>
+    <text:sequence-decl text:display-outline-level="0" text:name="Text"/>
+    <text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>
+    <text:sequence-decl text:display-outline-level="0" text:name="Figure"/>
+   </text:sequence-decls>
+   <text:p text:style-name="P1">URP Report</text:p>
+   <text:p text:style-name="P2">Yoel Yoffe (z5589593)</text:p>
+   <text:p text:style-name="P3"/>
+   <text:p text:style-name="P6">Overview and Project Layout</text:p>
+   <text:p text:style-name="P7">The URP implementation is written in Python. The project structure is simple: <text:span text:style-name="T5">sender.py</text:span> and <text:span text:style-name="T5">receiver.py</text:span> are the main two files, and both inherit from <text:span text:style-name="T5">common.py</text:span>. The sender and receiver can be run as indicated in the assignment specification. The receiver generates a log in <text:span text:style-name="T5">receiver_log.txt</text:span>, and the sender generates a log in <text:span text:style-name="T5">sender_log.txt</text:span>. The <text:s/>file <text:span text:style-name="T4">is transferred </text:span>over UDP sockets using a sliding-window mechanism.</text:p>
+   <text:p text:style-name="P6"/>
+   <text:p text:style-name="P6">Protocol Implementation</text:p>
+   <text:p text:style-name="P4">Overall Design</text:p>
+   <text:p text:style-name="P9">The overall program has been designed using an object oriented programming style. The sender and receiver are designed as classes to allow them to store internal state. The main external-facing method for these classes is <text:span text:style-name="T6">.run()</text:span>, which causes the sender or receiver to go through all states in its state transition diagram. <text:span text:style-name="T2">Threading is used to control retransmission timeouts as well as the timed wait period of the receiver.</text:span></text:p>
+   <text:p text:style-name="P9"/>
+   <text:p text:style-name="P9"><text:span text:style-name="T2">The sender and receiver rely on </text:span>helper classes and functions included in <text:span text:style-name="T6">common.py</text:span>. <text:span text:style-name="T2">One of these is a </text:span>checksum class; this will be discussed later in the report. Several modulo arithmetic functions have also been implemented to allow for clean handling of sequence number wraparound. These include <text:span text:style-name="T6">wrap_add()</text:span>, <text:span text:style-name="T6">wrap_sub() </text:span>and <text:span text:style-name="T6">wrap_cmp()</text:span>. The functions <text:span text:style-name="T6">wrap_add() </text:span>and <text:span text:style-name="T6">wrap_sub() </text:span>have standard implementations. The function <text:span text:style-name="T6">wrap_cmp()</text:span> assumes that if the two integers it is comparing differ by more than half the size of the sequence number space, then a wraparound of the smaller integer has occurred. This assumption is reasonable, considering sequence numbers increase by much less than half of the sequence number space each time. Since the window size must be less than half the sequence number space, there is never a case where the <text:span text:style-name="T6">wrap_cmp </text:span>logic can lead to issues. Finally, <text:span text:style-name="T6">common.py </text:span><text:span text:style-name="T2">includes </text:span>a <text:span text:style-name="T6">Segment </text:span>class. This is an abstraction of a URP segment which provides numerous convenience features. The constructor can be used to specify various URP segment properties like payload, sequence number and flags. The <text:span text:style-name="T6">.encode()</text:span> method is used to encode these fields as a byte array. The checksum is automatically generated when a segment is encoded. The input to the checksum is the entire encoded segment <text:s text:c="2"/>(with zeroes in place of the checksum field). The <text:span text:style-name="T6">.create()</text:span> factory method provides a simple interface for creating segments of a certain type. The <text:span text:style-name="T6">.decode()</text:span> static method parses a byte array into a segment. If the segment header is corrupted it does not attempt to create the segment; if the payload is corrupted the<text:span text:style-name="T6"> .decode() </text:span>method still creates the segment, but warns the caller about corruption via a return value. <text:span text:style-name="T2">A case where the segment header is corrupted should never occur with our corruption scheme, but is useful for generality. Thus, the Segment class is an effective abstraction of the details of segment encoding, decoding, and checksum verification.</text:span></text:p>
+   <text:p text:style-name="P4"/>
+   <text:p text:style-name="P5">Packet Loss and Corruption <text:span text:style-name="T2">(PLC) Module</text:span></text:p>
+   <text:p text:style-name="P10">The PLC module has been implemented as a class in<text:span text:style-name="T6"> sender.py</text:span>. It has two main interface methods, .send() and .recv(), which act as a black-box abstraction of an unreliable channel. </text:p>
+   <text:p text:style-name="P10"/>
+   <text:p text:style-name="P10">The <text:span text:style-name="T6">.send() </text:span>method first preforms a Bernoulli trial to see if it should drop the segment. If the segment should be drop, it writes a message to the log and updates its statistics. Otherwise, it performs another Bernoulli trial (independent of the first) to check if it should corrupt the segment. If the trial is successful, it flips one bit in the segment payload, updates its statistics, and writes to the log file. Finally, it sends the data through the socket. The entire method is enclosed in a lock, since it may be called concurrently from the retransmission thread and the main thread. The <text:span text:style-name="T6">.recv() </text:span>method functions analogously, first checking whether it should drop the received segment, and then checking whether it should corrupt the received segment. Logs are made as appropriate.</text:p>
+   <text:p text:style-name="P10"/>
+   <text:p text:style-name="P10">There is no communication between the PLC module and the outside world. The sender and receiver detect corruption and packet drops through their own mechanisms (timeouts and checksums); they do not use any information provided by the PLC module.</text:p>
+   <text:p text:style-name="P15"/>
+   <text:p text:style-name="P5"><text:soft-page-break/></text:p>
+   <text:p text:style-name="P5">Sender</text:p>
+   <text:p text:style-name="P14">The sender stores key fields inside a state control block, which is defined as a nested class. <text:span text:style-name="T4">A key field in the state control block is a buffer for</text:span> stor<text:span text:style-name="T4">ing </text:span>unacknowledged segments, <text:span text:style-name="T4">which is implemented as</text:span> a double ended queue. <text:span text:style-name="T4">The double ended queue allows for easy removal of newly acknowledged segment from the front of the queu, and insertion of newly sent segments at the back of the queue.</text:span> The state control block is also lockable to allow multiple threads to perform updates to it without races.</text:p>
+   <text:p text:style-name="P14"/>
+   <text:p text:style-name="P14">When the sender is run via the<text:span text:style-name="T6"> .run() </text:span>method it immediately sends a SYN segment and enters the syn_sent state. The SYN segment is sent via a special stop-wait exchange subroutine, which waits for a valid ack before proceeding further. Once the ack is received the connection is established and the sender enters the established state. It then enters a data sending loop, where it transmits all segments inside its send window and waits for acks.</text:p>
+   <text:p text:style-name="P14"/>
+   <text:p text:style-name="P16">Transmitting segments inside the send <text:span text:style-name="T4">window involves several steps. First, the number of bytes to transmit is calculated by taking the maximum between the window size and the MSS. Data is read from the input file just before it is transmitted (this means that the whole input file is never stored in memory at once). If the entire file has been read, then the state of the sender is changed to closing and the window transmission subroutine terminates early. Otherwise, a segment is created and sent through the socket.</text:span></text:p>
+   <text:p text:style-name="P16"/>
+   <text:p text:style-name="P17">Receiving an ack also involves several steps of control flow. If the ack is below the current base of the send window it is discarded. If the ack is instead equal to the base of the send window it is a duplicate ack, and the dup ack counter is incremented. If three duplicate acks are received a fast retransmission is triggered. If the ack is above the send window base some new segments have been received; we pop these segments from the unacked queue. We then check if the unacked queue is empty; if it is we cancel any outstanding retransmission timers. We also check whether this is an ack for the last data segment, since then we need to transition to the fin_wait state. Finally, we implement segment trimming. If an ack is in the middle of an unacked segment, the segment’s data is trimmed to start at the first unacknowledged byte. This should never be used in our URP protocol, but is useful for generality.</text:p>
+   <text:p text:style-name="P17"/>
+   <text:p text:style-name="P17">A design decision was made to have the window transmission and ack handling subroutines both run on the main thread, with ack handling following window transmission. Although these are separate events, their strong coupling means it is not useful to separate them into multiple threads. Specifically, the send window can only move forward if an ack is received. It therefore makes sense to wait for an ack to actually be processed before running the window transmission subroutine again. Running the two in separate threads would require complex event signalling mechanisms, which are unnecessary, and would bring no benefit in terms of execution speed or speed at which data is pipelined through the socket.</text:p>
+   <text:p text:style-name="P17"/>
+   <text:p text:style-name="P17">Once all data has been transmitted, the sender performs another stop-wait exchange to send the FIN segment. Once the corresponding ack has been received it enter the closed state and terminates.</text:p>
+   <text:p text:style-name="P17"/>
+   <text:p text:style-name="P17">Whenever the unacked queue is nonempty, a retransmission timer runs on a separate thread. When this timer fires the earliest unsent segment is resent. Locks are implemented to prevent conflicts between the main thread and the retransmission thread. </text:p>
+   <text:p text:style-name="P9"/>
+   <text:p text:style-name="P5">Receiver</text:p>
+   <text:p text:style-name="P10">Similarly to the sender, the key fields of the receiver are stored in its state control block, which is implemented as a nested class. The most important field in the state control block is the buffer, which is implemented as a double ended queue.</text:p>
+   <text:p text:style-name="P10"/>
+   <text:p text:style-name="P10">When the receiver is run (via the<text:span text:style-name="T4"> .run() </text:span>method), it immediately changes its state to listen. It then handles the stop-wait SYN-ACK exchange with the sender. When the first SYN is received, it enters the established state and sends back an ack. Subsequent SYN segments may be received if the ack was dropped or corrupted; in this <text:soft-page-break/>case the receiver just resends the ack.</text:p>
+   <text:p text:style-name="P10"/>
+   <text:p text:style-name="P11">Once the SYN-ACK exchange has been completed, the receiver enters a data-receiving loop. On the receipt of a data segment the .process_data_segment() method is called. <text:span text:style-name="T3">This method drops any packets beneath or above the receive window. A packet beneath the receive window is a duplicate packet; a packet above the receive window indicates that the sender’s window is bigger than ours. If the packet is within the window, the receiver runs a check for whether it is the next expected packet. If it is, it places it as the first item in the buffer and pops all in-order packets from the buffer, flushing them to the output file. If the packet has arrived out of order the receiver instead places it at the correct location in the buffer. Note that the buffer size can never exceed the receive window size, as is expected by the specification. After processing the data packet, the receiver sends back an ack with the sequence number corresponding to the next packet it expects. The data receiving loop terminates when a FIN packet is received.</text:span></text:p>
+   <text:p text:style-name="P11"/>
+   <text:p text:style-name="P13">On receiving a FIN <text:s/>the receiver sends back a<text:span text:style-name="T4">n </text:span><text:s/>ack and enters the time_wait state. It sets a timer for twice the maximum segment lifetime. When this timer fires, the state of the receiver will be changed to closed. Until then, the receiver <text:s/>polls the socket in a loop (using nonblocking socket IO). If further FIN packets are received it sends back an ack and restarts the timer. <text:span text:style-name="T4">When the </text:span>closed state is entered the receiver terminates. </text:p>
+   <text:p text:style-name="P12"/>
+   <text:p text:style-name="P14">When designing the receiver the decision was made to use a <text:span text:style-name="T4">double ended queue</text:span> as the buffer data structure. Th<text:span text:style-name="T4">is</text:span> allows for incoming in-order segments to be quickly inserted at the front of the buffer, and for items to be quickly popped from the front of the buffer. Searching for a place <text:span text:style-name="T4">to </text:span>insert an out-of-order segment is done via a linear scan: since window sizes encompass around 30 segments or below there is no need to use other mechanisms like binary searches or red-black trees. A linear scan is simple and has low constant factors.</text:p>
+   <text:p text:style-name="P14"/>
+   <text:p text:style-name="P4">Checksum Mechanism</text:p>
+   <text:p text:style-name="P8">The checksum mechanism used is a 16-bit cyclic redundancy check. The code can be found in the CRC16 class of <text:span text:style-name="T5">common.py</text:span>. The cyclic redundancy check involves taking a polynomial of degree 17 with all coefficients either 0 or 1 <text:span text:style-name="T1">and performing a polynomial division with the polynomial that is represented by the data bits. <text:s/>The degree-16 remainder polynomial, represented as a bit pattern, is the checksum value. Each division step is accomplished by taking bitwise XORs. <text:s/></text:span></text:p>
+   <text:p text:style-name="P8"/>
+   <text:p text:style-name="P8"><text:span text:style-name="T1">My implementation uses the polynomial 0x16F63, which was listed as a common CRC-16 polynomial in online sources (e.g. </text:span><text:a xlink:type="simple" xlink:href="https://users.ece.cmu.edu/~koopman/crc/crc16.html" text:style-name="Internet_20_link" text:visited-style-name="Visited_20_Internet_20_Link"><text:span text:style-name="T1">https://users.ece.cmu.edu/~koopman/crc/crc16.html</text:span></text:a><text:span text:style-name="T1">) . Testing using 10000 randomly generated byte strings of length from 1 to 10000 demonstrated a 100% accuracy rate, with all corrupted packets being detected as such and all uncorrupted packets passing the checksum.</text:span></text:p>
+   <text:p text:style-name="P8"/>
+   <text:p text:style-name="P9">The core of the implementation lies in the _get_remainder() function of the CRC16 class. The function first adds a 16-bit trailer of 0s to the data. While there are 1s remaining in the data, the function takes a XOR with the specified polynomial in order to clear the ones, simulating a polynomial division. Once all 1s are cleared, the content of the 16-bit trailer is returned as the checksum. </text:p>
+   <text:p text:style-name="P9"/>
+   <text:p text:style-name="P9">A common speedup to the CRC checksum is a CRC table, which allows one byte to be XORed at a time instead of one bit. This was deemed unnecessary for the implementation, as the speed gains for our small segment sizes of 1000 bytes would not be noticeable.</text:p>
+   <text:p text:style-name="P4"/>
+   <text:p text:style-name="P6">Errors</text:p>
+   <text:p text:style-name="P7">There have been no errors found in the implementation during testing. <text:span text:style-name="T2">The implementation has been used to transfer large files (6MB), as well as files under adverse conditions (transfer of rfc793.txt succeeds when flp,rlp,fcp,rcp are all 0.9, though it takes a long time). Sliding windows up to 30 000 have been tested. The sliding window behaviour can be demonstrated by setting a large window size (e.g. 8000), and setting rcp to 0.9 while all other probabilities are 0. If this is done the general pattern in the log file is that the entire window is sent, then an ack for the entire window eventually arrives, causing another full window to be sent, with the process repeating until termination. </text:span></text:p>
+  </office:text>
+ </office:body>
+</office:document>

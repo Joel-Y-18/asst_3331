@@ -2,19 +2,19 @@ import subprocess
 import time
 
 ## Params ##
-sender_port = 12000
-receiver_port = 14000
+sender_port = 12003
+receiver_port = 14003
 
 text_file = 'rfc793.txt'
 
-max_win_snd = 1000
-max_win_rcv = 1000
-rto = 50
+max_win_snd = 32000
+max_win_rcv = 32000
+rto = 20
 
-flp = 0.5
-rlp = 0.5
+flp = 0
+rlp = 0
 fcp = 0
-rcp = 0
+rcp = 0.9
 
 ## Code ##
 
@@ -81,6 +81,7 @@ with open('sender_log.txt') as sl, open('receiver_log.txt') as rl:
     check(snd_timeouts + snd_fast_retransmits == snd_tot_segs - snd_orig_segs, 'timeout or fast retransmit counters are off')
     check(snd_cor_acks_discarded == plc_rev_cor, 'sender did not discard some corrupted packets')
     check(rcv_cor_segs_discarded == plc_fwd_cor, 'receiver did not discard some corrupted packets')
+    check(rcv_tot_segs + plc_fwd_drp == snd_tot_segs, 'total segments received do not add up')
     
     if check_fail:
         print("Checks failed. The original stats are below.")
